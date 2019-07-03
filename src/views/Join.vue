@@ -13,10 +13,10 @@
               <div class="download-qrcode_pic"><img src="../assets/img/android.png" alt=""></div>
               <div class="download-qrcode_name">Android</div>
             </div>
-            <div class="download-qrcode_item">
+            <!-- <div class="download-qrcode_item">
               <div class="download-qrcode_pic"></div>
               <div class="download-qrcode_name">微信小程序</div>
-            </div>
+            </div> -->
           </div>
 
           <p class="join-download_title">开发文档</p>
@@ -24,7 +24,7 @@
             <a href="https://docs.anyrtc.io/v1/P2P/ios.html" target="_blank" class="join-download_link">iOS</a>
             <a href="https://docs.anyrtc.io/v1/P2P/android.html" target="_blank" class="join-download_link">Android</a>
             <a href="https://docs.anyrtc.io/v1/P2P/web.html" target="_blank" class="join-download_link">Web</a>
-            <a href="javascript:void(0)" target="_blank" class="join-download_link">微信小程序</a>
+            <!-- <a href="javascript:void(0)" target="_blank" class="join-download_link">微信小程序</a> -->
           </div>
 
           <p class="join-download_title">查看源码</p>
@@ -32,7 +32,7 @@
             <a href="https://github.com/anyRTC/anyRTC-P2P-iOS" target="_blank" class="join-download_link">iOS</a>
             <a href="https://github.com/anyRTC/AR-Call-Android" target="_blank" class="join-download_link">Android</a>
             <a href="https://github.com/anyRTC/AR-P2P-Web" target="_blank" class="join-download_link">Web</a>
-            <a href="javascript:void(0)" target="_blank" class="join-download_link">微信小程序</a>
+            <!-- <a href="javascript:void(0)" target="_blank" class="join-download_link">微信小程序</a> -->
           </div>
         </div>
         <div class="join-form">

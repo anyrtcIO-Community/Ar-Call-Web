@@ -1,5 +1,5 @@
 export default {
-  APP_ID: "", 
+  APP_ID: "",            
   APP_TOKEN: "",
-  RTC_SERVE_URL: ""
-};
+  RTC_SERVE_URL: "",
+}
