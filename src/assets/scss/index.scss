@@ -108,12 +108,10 @@
 .ar-log_view {
   background-color: #E5E7E9;
   .ar-p2p_log {
-    padding: 0px 30px;
+    padding: 10px 30px;
     overflow: hidden;
-    overflow-y: auto;
     width: 100%;
     box-sizing: border-box;
-
     .ar-p2p_log_item {
       margin-bottom: 10px;
       font-size: 14px;
@@ -189,74 +187,8 @@ h3{
     height: 100%;
     overflow: hidden;
     overflow-y: auto;
-
-    .ar-video_box {
-      flex: 0 1 auto;
-      box-sizing: border-box;
-      overflow: hidden;
-      background-color: #000;
-      border-bottom: 1px solid #FFF;
-      position: relative;
-      &:nth-child(even) {
-        border-left: 1px solid #fff;
-      }
-      .code{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: 20;
-        background-color: rgba(0, 0, 0, 0.3);
-        img{
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          padding: 10px;
-          transform: translate(-50%, -50%);
-        }
-      }
-      span{
-        position: absolute;
-        top: 10px;
-        display: inline-block;
-        width:120px;
-        height:32px;
-        line-height:32px;
-        font-size:12px;
-        color:rgba(255,255,255,1);
-        text-align: center;
-        background: rgba(29,34,40, .8);
-        border-radius:4px;
-        z-index: 9;
-        box-sizing: border-box;
-        cursor: pointer;
-        border: 1px solid #DDD;
-        &.full-screen{
-          right: 10px;
-        }
-        &.un-subscribe{
-          right: 10px;
-          top: 50px;
-        }
-        &.AR-code{
-          z-index: 99;
-          top: 90px;
-          right: 10px;
-        }
-        &.ar-pubId{
-          width: 270px !important;
-          left: 10px;
-          input{
-            border: none;
-            outline: none;
-            background-color: transparent;
-            color: #FFF;
-            font-size: 12px;
-          }
-          a{
-            padding-left: 10px;
-          }
-        }
-      }
+    >div{
+      position: absolute !important;
     }
   }
 }

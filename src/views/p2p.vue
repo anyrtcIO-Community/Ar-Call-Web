@@ -42,7 +42,6 @@
               <div :class="['ar-p2p_log_item', {'error': log.type === 'error'}]" v-for="(log, n) in logs" :key="n">{{log.content}}</div>
             </div>
           </div>
-          <div class="ar-p2p_box_background"></div>
         </div>
       </div>
       <!--  -->
@@ -61,7 +60,7 @@
           <!--  -->
           <h3>{{isVideoCall ? '视频通话窗口' : '语音通话成员'}}</h3>
           <!--  -->
-          <div class="ar-main">
+          <div class="ar-main" style="position: relative;">
             <div class="ar-video_view" ref="videoView">
               <div class="ar-video_wrap" ref="videoWrap">
                 <div class="ar-audio_call" v-if="!isVideoCall">
@@ -137,6 +136,7 @@ export default {
       return;
     } 
     let that = this;
+    //初始化SDK
     let call = new ArCall({
         autoBitrate: true,
         userData: '{}',
@@ -166,7 +166,6 @@ export default {
     })
     //用户收到通话请求
     call.on("make-call", (roomId, peerUserId, callMode, peerUserData, callExtend) => {
-      console.log("make-call", roomId, peerUserId, callMode, peerUserData, callExtend);
       that.addLog('info', `回调make-call：收到${callMode == 0 ? '视频呼叫' : callMode == 2 ? '音频呼叫':''}请求`);
       that.isShowMessge = true;
       that.msg = {
@@ -181,29 +180,24 @@ export default {
     });
     //用户上线成功回调
     call.on("online-success", () => {
-      console.log('用户上线成功');
       that.addLog('info', '回调online-success：用户上线成功');
     });
     //用户上线失败回调
     call.on("online-failed", (errCode) => {
-      console.log('用户上线失败'+ errCode)
       that.addLog('info', '回调online-failed：用户上线失败');
     });
     //对方同意呼叫回调
     call.on("accept-call", (peerUserId) => {
       that.addLog('info', '回调accept-call：对方同意呼叫');
-      console.log('对方同意呼叫'+ peerUserId)
     });
     //对方拒绝呼叫
     call.on("reject-call", (peerUserId, code) => {
       that.addLog('info', '回调reject-call：对方拒绝呼叫');
-      console.log('对方拒绝呼叫'+ peerUserId, code)
       that.$message.error('对方拒绝通话');
       that.leaveP2P();
     });
     //通话结束
     call.on("end-call", (peerUserId, errCode) => {
-      console.log('通话结束'+ peerUserId, errCode);
       that.addLog('info', '回调end-call：对方拒绝呼叫'+errCode);
       that.$message.error('通话结束');
       that.isShowMessge = false;
@@ -213,22 +207,19 @@ export default {
     });
     //收到对方视频流
     call.on("stream-subscribed", (peerUserId, pubId, rtcUserData, mediaRender) => {
-      console.log('收到对方视频流', peerUserId,pubId,rtcUserData, mediaRender)
       that.addLog('info', '回调stream-subscribed：收到对方音/视频');
       mediaRender.id = 'video_'+peerUserId;
+      mediaRender.style = "position: absolute; width:100%; height: 100%;"
       that.$refs.videoWrap.appendChild(mediaRender);
-
       if(!that.isVideoCall){
         that.isShowAudio = true;
         that.startTime();
         let box = document.getElementById('video_'+peerUserId);
         box.style = "z-index:-99; display:none;"
       }
-      
     });
     //移除远程视频窗口
     call.on("stream-unsubscribed", (peerUserId, pubId, rtcUserData) => {
-      console.log('移除远程视频窗口', peerUserId)
       that.addLog('info', '回调stream-unsubscribed：移除远程视频窗口');
       document.getElementById('video_'+peerUserId).remove();
       that.isWaiting = true;
@@ -279,7 +270,6 @@ export default {
       }).then(e => {
         e.mediaRender.id = "myVideo";
         that.$refs.myVideoView.appendChild(e.mediaRender);
-        that.addLog('info', '方法acceptCall：同意接听');
         cb && cb();
       }).catch(err => {
         console.log(err)
