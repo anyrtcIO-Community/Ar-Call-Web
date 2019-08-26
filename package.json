@@ -20,7 +20,7 @@
     "@vue/cli-plugin-unit-jest": "^3.8.0",
     "@vue/cli-service": "^3.8.0",
     "@vue/test-utils": "1.0.0-beta.29",
-    "ar-call": "^3.0.15",
+    "ar-call": "^3.0.16",
     "ar-detect": "^3.0.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
