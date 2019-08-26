@@ -166,6 +166,7 @@ export default {
     })
     //用户收到通话请求
     call.on("make-call", (roomId, peerUserId, callMode, peerUserData, callExtend) => {
+      console.log("make-call", roomId, peerUserId, callMode, peerUserData, callExtend);
       that.addLog('info', `回调make-call：收到${callMode == 0 ? '视频呼叫' : callMode == 2 ? '音频呼叫':''}请求`);
       that.isShowMessge = true;
       that.msg = {
@@ -188,22 +189,29 @@ export default {
     });
     //对方同意呼叫回调
     call.on("accept-call", (peerUserId) => {
+      console.log("accept-call", peerUserId);
       that.addLog('info', '回调accept-call：对方同意呼叫');
     });
     //对方拒绝呼叫
     call.on("reject-call", (peerUserId, code) => {
+      console.log("reject-call", peerUserId, code);
       that.addLog('info', '回调reject-call：对方拒绝呼叫');
       that.$message.error('对方拒绝通话');
       that.leaveP2P();
     });
     //通话结束
     call.on("end-call", (peerUserId, errCode) => {
+      console.log("end-call", peerUserId, errCode);
       that.addLog('info', '回调end-call：对方拒绝呼叫'+errCode);
       that.$message.error('通话结束');
       that.isShowMessge = false;
       that.msg = {};
       that.leaveP2P();
     
+    });
+    //
+    call.on("user-message", (peerUserId, errCode) => {
+      that.addLog('user-message', '回调user-message');
     });
     //收到对方视频流
     call.on("stream-subscribed", (peerUserId, pubId, rtcUserData, mediaRender) => {
@@ -237,7 +245,7 @@ export default {
     closeMessage(){
       let that = this;
       that.call.rejectCall(that.msg.peerUserId);
-      that.addLog('info', '方法rejectCall：拒绝接听');   
+      that.addLog('info', '方法rejectCall：拒绝接听');
       that.isShowMessge = false;
     },
     submit(){
@@ -323,7 +331,7 @@ export default {
       that.pubId = that.callId;
       that.setLocalVideoCapturer();
       that.addLog('info','方法makeCall：发起音频呼叫');
-      that.call.makeCall(this.callId, 2, '{}', {});
+      that.call.makeCall(this.callId, 2, {});
     },
     //视频呼叫
     videoCall(){
@@ -346,7 +354,7 @@ export default {
       that.isVideoCall = true;
       that.setLocalVideoCapturer();
       that.addLog('info','方法makeCall：发起视频呼叫');
-      that.call.makeCall(that.callId, 0, '');
+      that.call.makeCall(that.callId, 0, {});
     },
     addLog(type, strLog) {
       this.logs.push({
