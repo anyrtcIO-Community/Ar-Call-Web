@@ -13,9 +13,9 @@ export default new Router({
       component: () => import('./views/Join.vue')
     },
     {
-      path: '/p2p/:userId',
-      name: 'p2p',
-      component: () => import('./views/p2p.vue')
+      path: '/call/:userId',
+      name: 'call',
+      component: () => import('./views/call.vue')
     },
   ]
 })

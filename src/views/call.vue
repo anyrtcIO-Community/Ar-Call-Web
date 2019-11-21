@@ -164,19 +164,26 @@ export default {
     .catch(err => {
       console.log('getDevice error', err);
     })
+    call.on("join-room-success", (roomId) => {
+      console.log('加入房间成功', roomId)
+    });
     //用户收到通话请求
     call.on("make-call", (roomId, peerUserId, callMode, peerUserData, callExtend) => {
       console.log("make-call", roomId, peerUserId, callMode, peerUserData, callExtend);
       that.addLog('info', `回调make-call：收到${callMode == 0 ? '视频呼叫' : callMode == 2 ? '音频呼叫':''}请求`);
-      that.isShowMessge = true;
-      that.msg = {
-        title: '提示',
-        text: `接收到${peerUserId}的${callMode == 0 ? '视频呼叫' : callMode == 2 ? '音频呼叫' : callMode == 21 ? '视频呼叫客服' : '音频呼叫客服'}`,
-        roomId: roomId,
-        peerUserId: peerUserId,
-        callMode: callMode,
-        peerUserData: peerUserData,
-        callExtend: callExtend,
+      if(callMode == 1){
+        that.call.rejectCall(peerUserId);
+      }else{
+        that.isShowMessge = true;
+        that.msg = {
+          title: '提示',
+          text: `接收到${peerUserId}的${callMode == 0 ? '视频呼叫' : callMode == 2 ? '音频呼叫' : callMode == 21 ? '视频呼叫客服' : '音频呼叫客服'}`,
+          roomId: roomId,
+          peerUserId: peerUserId,
+          callMode: callMode,
+          peerUserData: peerUserData,
+          callExtend: callExtend,
+        }
       }
     });
     //用户上线成功回调
@@ -228,8 +235,9 @@ export default {
     //移除远程视频窗口
     call.on("stream-unsubscribed", (peerUserId, pubId, rtcUserData) => {
       that.addLog('info', '回调stream-unsubscribed：移除远程视频窗口');
-      document.getElementById('video_'+peerUserId).remove();
-      that.isWaiting = true;
+      if(document.getElementById('video_'+peerUserId)) document.getElementById('video_'+peerUserId).remove();
+      if(document.getElementById('myVideo')) document.getElementById("myVideo").remove();
+      // that.isWaiting = true;
       that.videoEnable = true;
       that.audioEnable = true;
       if(!that.isVideoCall){
@@ -238,7 +246,6 @@ export default {
         clearInterval(that.callTimer);
         that.talkTime = '00 : 00 : 00';
       }
-      document.getElementById("myVideo").remove();
     });
   },
   methods: {
