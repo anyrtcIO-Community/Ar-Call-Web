@@ -329,9 +329,10 @@ export default {
       that.isWaiting = false;
       that.isVideoCall = false;
       that.pubId = that.callId;
-      that.setLocalVideoCapturer();
-      that.addLog('info','方法makeCall：发起音频呼叫');
-      that.call.makeCall(this.callId, 2, {});
+      that.setLocalVideoCapturer(() => {
+        that.addLog('info','方法makeCall：发起音频呼叫');
+        that.call.makeCall(this.callId, 2, {});
+      });
     },
     //视频呼叫
     videoCall(){
@@ -352,9 +353,10 @@ export default {
       that.pubId = that.callId;
       that.isWaiting = false;
       that.isVideoCall = true;
-      that.setLocalVideoCapturer();
-      that.addLog('info','方法makeCall：发起视频呼叫');
-      that.call.makeCall(that.callId, 0, {});
+      that.setLocalVideoCapturer(() => {
+        that.addLog('info','方法makeCall：发起视频呼叫');
+        that.call.makeCall(that.callId, 0, {});
+      });
     },
     addLog(type, strLog) {
       this.logs.push({
@@ -477,6 +479,9 @@ export default {
   font-size: 12px;
   color: #fff;
 }
+.ar-video_wrap {
+  position: relative;
+}
 .ar-audio_call{
   position: relative;
   z-index: 2;
@@ -488,6 +493,8 @@ export default {
   border:1px solid rgba(238,238,238,1);
   box-shadow:0px 4px 10px 0px rgba(0, 0, 0, 0.07);
   border-radius:4px;
+  box-sizing: border-box;
+
   h3{
     margin: 80px 0 30px;
     height:20px;
@@ -581,5 +588,38 @@ export default {
       }
     }
   }
+}
+@media screen and (max-width: 475px) {
+  .ar-await {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ar-await-content {
+    text-align: center;
+  }
+  .el-input {
+    margin-bottom: 20px;
+  }
+
+
+  .ar-container {
+    flex-direction: column;
+  }
+  .ar-p2p_side {
+    width: 100%;
+    flex: 1;
+  }
+  .ar-p2p_view {
+    flex: 1;
+  }
+  .ar-audio_call {
+    width: 100%;
+    height: 100%;
+  }
+
 }
 </style>

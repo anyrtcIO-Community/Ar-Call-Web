@@ -186,5 +186,13 @@
   .join-radio{
     margin-top: 20px;
   }
+  
+  @media screen and (max-width: 475px) {
+    .join-wrap {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 </style>
 
