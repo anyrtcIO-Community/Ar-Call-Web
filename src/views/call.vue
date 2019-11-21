@@ -60,7 +60,7 @@
           <!--  -->
           <h3>{{isVideoCall ? '视频通话窗口' : '语音通话成员'}}</h3>
           <!--  -->
-          <div class="ar-main" style="position: relative;">
+          <div class="ar-main">
             <div class="ar-video_view" ref="videoView">
               <div class="ar-video_wrap" ref="videoWrap">
                 <div class="ar-audio_call" v-if="!isVideoCall">
@@ -216,7 +216,6 @@ export default {
     call.on("stream-subscribed", (peerUserId, pubId, rtcUserData, mediaRender) => {
       that.addLog('info', '回调stream-subscribed：收到对方音/视频');
       mediaRender.id = 'video_'+peerUserId;
-      mediaRender.style = "position: absolute; width:100%; height: 100%;"
       that.$refs.videoWrap.appendChild(mediaRender);
       if(!that.isVideoCall){
         that.isShowAudio = true;

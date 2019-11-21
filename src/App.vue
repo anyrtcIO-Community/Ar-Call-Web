@@ -39,7 +39,7 @@ ul, li{ list-style: none;}
 }
 .ar-main {
   display: block;
-  flex: 1 1 auto;
+  flex: 1;
 }
 .ar-aside{
   width: 320px;
