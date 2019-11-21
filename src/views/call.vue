@@ -146,7 +146,7 @@ export default {
 
     call.initAppInfo(config.APP_ID, config.APP_TOKEN);
 
-    call.configServer(config.RTC_SERVE_URL);
+    config.RTC_SERVE_URL && call.configServer(config.RTC_SERVE_URL);
 
     call.turnOn(that.userId, '');
     

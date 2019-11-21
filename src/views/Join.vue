@@ -70,7 +70,7 @@
           this.$message.error('帐号只能是数字');
           return ; 
         } 
-        this.$router.push(`/p2p/${this.userId}`)
+        this.$router.push(`/call/${this.userId}`)
       },
     },
   }
