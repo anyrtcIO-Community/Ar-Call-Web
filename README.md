@@ -1,4 +1,4 @@
-# ar-p2p-demo
+# ar-call-demo
 
 ## Project setup
 ```
