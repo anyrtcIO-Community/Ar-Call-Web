@@ -1,6 +1,6 @@
 module.exports = {
   lintOnSave: false,
-  publicPath: "/ar-p2p/",
+  publicPath: "/",
   devServer: {
     https: true
   }
