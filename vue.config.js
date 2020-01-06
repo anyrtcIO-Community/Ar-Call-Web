@@ -1,6 +1,6 @@
 module.exports = {
   lintOnSave: false,
-  publicPath: "/",
+  publicPath: "/ar-call/",
   devServer: {
     https: true
   }
