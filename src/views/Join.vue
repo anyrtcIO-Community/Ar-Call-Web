@@ -21,24 +21,24 @@
 
           <p class="join-download_title">开发文档</p>
           <div class="join-download_links">
-            <a href="https://docs.anyrtc.io/v1/P2P/ios.html" target="_blank" class="join-download_link">iOS</a>
-            <a href="https://docs.anyrtc.io/v1/P2P/android.html" target="_blank" class="join-download_link">Android</a>
-            <a href="https://docs.anyrtc.io/v1/P2P/web.html" target="_blank" class="join-download_link">Web</a>
+            <a href="https://docs.anyrtc.io/v1/CALL/ios.html" target="_blank" class="join-download_link">iOS</a>
+            <a href="https://docs.anyrtc.io/v1/CALl/android.html" target="_blank" class="join-download_link">Android</a>
+            <a href="https://docs.anyrtc.io/v1/CAll/web.html" target="_blank" class="join-download_link">Web</a>
             <!-- <a href="javascript:void(0)" target="_blank" class="join-download_link">微信小程序</a> -->
           </div>
 
           <p class="join-download_title">查看源码</p>
           <div class="join-download_links">
-            <a href="https://github.com/anyRTC/anyRTC-P2P-iOS" target="_blank" class="join-download_link">iOS</a>
+            <a href="https://github.com/anyRTC/AR-Call-iOS" target="_blank" class="join-download_link">iOS</a>
             <a href="https://github.com/anyRTC/AR-Call-Android" target="_blank" class="join-download_link">Android</a>
-            <a href="https://github.com/anyRTC/AR-P2P-Web" target="_blank" class="join-download_link">Web</a>
+            <a href="https://github.com/anyRTC/AR-Call-Web" target="_blank" class="join-download_link">Web</a>
             <!-- <a href="javascript:void(0)" target="_blank" class="join-download_link">微信小程序</a> -->
           </div>
         </div>
         <div class="join-form">
           <div>
             <img class="join-form_logo" src="../assets/img/logo.png" alt="" style="width: 70px;height: 70px;">
-            <p class="join-form_appname">AR P2P呼叫DEMO</p>
+            <p class="join-form_appname">AR Call呼叫DEMO</p>
           </div>
           <div class="join-input">
             <el-input v-model="userId" placeholder="请输入手机号" @keyup.enter.native="join" ></el-input>
