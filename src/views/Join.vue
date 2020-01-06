@@ -1,8 +1,9 @@
 <template>
   <div class="ar-main join-page">
     <div class="call-container">
-      <div class="join-wrap">
-        <div class="join-download">
+      <div class="join-wrap" style="justify-content: center;">
+
+        <!-- <div class="join-download">
           <p class="join-download_title">客户端下载</p>
           <div class="download-qrcode">
             <div class="download-qrcode_item">
@@ -13,10 +14,6 @@
               <div class="download-qrcode_pic"><img src="../assets/img/android.png" alt=""></div>
               <div class="download-qrcode_name">Android</div>
             </div>
-            <!-- <div class="download-qrcode_item">
-              <div class="download-qrcode_pic"></div>
-              <div class="download-qrcode_name">微信小程序</div>
-            </div> -->
           </div>
 
           <p class="join-download_title">开发文档</p>
@@ -24,7 +21,6 @@
             <a href="https://docs.anyrtc.io/v1/CALL/ios.html" target="_blank" class="join-download_link">iOS</a>
             <a href="https://docs.anyrtc.io/v1/CALl/android.html" target="_blank" class="join-download_link">Android</a>
             <a href="https://docs.anyrtc.io/v1/CAll/web.html" target="_blank" class="join-download_link">Web</a>
-            <!-- <a href="javascript:void(0)" target="_blank" class="join-download_link">微信小程序</a> -->
           </div>
 
           <p class="join-download_title">查看源码</p>
@@ -32,9 +28,9 @@
             <a href="https://github.com/anyRTC/AR-Call-iOS" target="_blank" class="join-download_link">iOS</a>
             <a href="https://github.com/anyRTC/AR-Call-Android" target="_blank" class="join-download_link">Android</a>
             <a href="https://github.com/anyRTC/AR-Call-Web" target="_blank" class="join-download_link">Web</a>
-            <!-- <a href="javascript:void(0)" target="_blank" class="join-download_link">微信小程序</a> -->
           </div>
-        </div>
+        </div> -->
+
         <div class="join-form">
           <div>
             <img class="join-form_logo" src="../assets/img/logo.png" alt="" style="width: 70px;height: 70px;">
@@ -46,7 +42,15 @@
           <div class="join-input">
             <el-button type="primary" @click="join">登录</el-button>
           </div>
+
+          <div class="footer_item">
+            <br>
+            <span><a data-v-3e91617f="" href="http://www.miitbeian.gov.cn" target="_blank">沪ICP备12034204号</a></span> <br>
+            <span style="margin-left: 18px;"><a data-v-3e91617f="" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011002002733">沪公网安备 31011002002733号</a></span>
+          </div>
+
         </div>
+
       </div>
     </div>
   </div>
@@ -193,6 +197,11 @@
       justify-content: center;
       align-items: center;
     }
+  }
+
+  .footer_item * {
+    font-size: 10px;
+    color: #666 !important;
   }
 </style>
 
