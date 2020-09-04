@@ -24,7 +24,7 @@
     "ar-detect": "^3.0.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "sass-loader": "^7.3.1",
     "vue-template-compiler": "^2.6.10"
   }
